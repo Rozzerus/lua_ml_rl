@@ -20,3 +20,76 @@ while a~=6 do -- Lua uses ~= to mean not equal
     io.write(a.."  ")
 end
 
+a=0
+repeat
+    a=a+1
+    print(a)
+until a==5
+
+-- Count from 1 to 4 by 1.
+for a=1,4 do io.write(a) end
+
+-- Count from 1 to 6 by 3.
+for a=1,6,3 do io.write(a) end
+
+for key,value in pairs({1,2,3,4}) do print(key, value) end
+
+a={1,2,3,4,"five","elephant", "mouse"}
+
+for i,v in pairs(a) do print(i,v) end
+
+
+a=0
+while true do
+    a=a+1
+    if a==10 then
+        break
+    end
+end
+
+print(a)
+
+
+string.format(fmt, ...)
+
+
+-- Math functions:
+-- math.abs, math.acos, math.asin, math.atan, math.atan2,
+-- math.ceil, math.cos, math.cosh, math.deg, math.exp, math.floor,
+-- math.fmod, math.frexp, math.huge, math.ldexp, math.log, math.log10,
+-- math.max, math.min, math.modf, math.pi, math.pow, math.rad,
+-- math.random, math.randomseed, math.sin, math.sinh, math.sqrt,
+-- math.tan, math.tanh
+
+print(math.sqrt(9), math.pi)
+
+
+-- String functions:
+-- string.byte, string.char, string.dump, string.find, string.format,
+-- string.gfind, string.gsub, string.len, string.lower, string.match,
+-- string.rep, string.reverse, string.sub, string.upper
+
+print(string.upper("lower"),string.rep("a",5),string.find("abcde", "cd"))
+
+
+-- Table functions:
+-- table.concat, table.insert, table.maxn, table.remove, table.sort
+
+a={2}
+table.insert(a,3);
+table.insert(a,4);
+table.sort(a,function(v1,v2) return v1 > v2 end)
+for i,v in ipairs(a) do print(i,v) end
+
+
+
+-- IO functions:
+-- io.close , io.flush, io.input, io.lines, io.open, io.output, io.popen,
+-- io.read, io.stderr, io.stdin, io.stdout, io.tmpfile, io.type, io.write,
+-- file:close, file:flush, file:lines ,file:read,
+-- file:seek, file:setvbuf, file:write
+
+
+-- OS functions:
+-- os.clock, os.date, os.difftime, os.execute, os.exit, os.getenv,
+-- os.remove, os.rename, os.setlocale, os.time, os.tmpname
