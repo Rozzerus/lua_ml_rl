@@ -14,6 +14,8 @@ local appleY = 0
 
 local tail = {}
 
+log_file = io.open('snake_log.txt', "w")
+
 tail_legth = 0
 up = false
 down = false
@@ -44,6 +46,8 @@ function game_draw()
 end
 
 function game_update()
+
+
     if up and dirY == 0 then
         dirX, dirY = 0, -1
     elseif down and dirY == 0 then
@@ -88,6 +92,11 @@ function game_update()
         if snakeX == v[1] and snakeY == v[2] then
             state = GaneStates.game_over
         end
+    end
+
+    if state == GaneStates.running then
+        log_file:write('{"snakeX":'..snakeX..',"snakeY":'..snakeY..',"appleX":'..appleX..',"appleY":'..appleY..',"tail_legth":'..tail_legth..'}\n')
+        log_file:flush()
     end
 
 end
