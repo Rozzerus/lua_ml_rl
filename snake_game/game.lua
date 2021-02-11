@@ -1,5 +1,5 @@
 
-GaneStates = {pause='pause', running='running', game_over='game over'}
+GaneStates = {pause='pause', running='running', game_over='game_over'}
 state = GaneStates.running
 
 local snakeX = 15
@@ -94,8 +94,8 @@ function game_update()
         end
     end
 
-    if state == GaneStates.running then
-        log_file:write('{"snakeX":'..snakeX..',"snakeY":'..snakeY..',"appleX":'..appleX..',"appleY":'..appleY..',"tail_legth":'..tail_legth..'}\n')
+    if state == GaneStates.running or state == GaneStates.game_over then
+        log_file:write('{"snakeX":'..snakeX..',"snakeY":'..snakeY..',"appleX":'..appleX..',"appleY":'..appleY..',"tail_legth":'..tail_legth..',"state":'..state..'}\n')
         log_file:flush()
     end
 
