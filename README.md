@@ -4,7 +4,7 @@ My goal to implement RL algorithm example to the snake game.
 
 ![alt text](img.png)
 
-# For run:
+# Dependencies:
 Lua 5.1
 Python 3.8
 
