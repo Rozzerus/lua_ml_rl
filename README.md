@@ -1,6 +1,6 @@
-# lua_ml_rl
-It's my first Lua project
-I want to implement RL algorithm example to a snake game.
+# Lua snake game
+This is my first Lua project.
+My goal to implement RL algorithm example to the snake game.
 
 ![alt text](img.png)
 
