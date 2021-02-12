@@ -1,11 +1,11 @@
 import gym
-from gym import error, spaces, utils
+from gym import spaces
 import numpy as np
 
-from reinforcement_learning.snake_controller import SnakeController
+from snake_rl.reinforcement_learning.environment.snake_controller import SnakeController
 
 
-class Env(gym.Env):
+class SnakeEnvironment(gym.Env):
 
     def __init__(self):
         self.snake_controller: SnakeController = None

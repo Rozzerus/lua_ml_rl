@@ -10,7 +10,9 @@ class SnakeController:
     def __init__(self, reward_step=-0.25, reward_apple=3.5, reward_death=-10.0, reward_death2=-100.0,
                  reward_apple_func=lambda cnt, reward: sqrt(cnt) * reward) -> None:
         self.keyboard: Controller = Controller()
-        self.reward_reader: GameRewordReader = GameRewordReader()
+        self.reward_reader: GameRewordReader = GameRewordReader('../snake_game/snake_log.txt')
+
+        self.direction = self.DIRECTIONS['UP']
 
         self.reward_step = reward_step
         self.reward_apple = reward_apple
@@ -37,13 +39,14 @@ class SnakeController:
         self.keyboard.release(key)
 
     def reset(self) -> None:
+        time.sleep(2)
         key = 'r'
         self.keyboard.press(key)
         self.keyboard.release(key)
 
     def get_raw_state(self):
         game_state: dict = self.reward_reader.read_current_game_state()
-        game_stage = game_state['tail_legth']
+        game_stage = game_state['state']
         reward = self.reward_step
         self.count_steps = self.reward_reader.get_count_steps()
         if self.count_apples < int(game_state['tail_legth']):
@@ -66,8 +69,8 @@ class SnakeController:
 
 class GameRewordReader:
 
-    def __init__(self) -> None:
-        self.path = '../snake_game/snake_log.txt'
+    def __init__(self, path) -> None:
+        self.path = path
         self.steps = 0
 
     def get_count_steps(self) -> int:
@@ -78,13 +81,18 @@ class GameRewordReader:
         line_list = file_handle.readlines()
         file_handle.close()
         self.steps = len(line_list)
-        return json.loads(line_list[-1])
+        if self.steps > 0:
+            print(line_list[-1])
+            return json.loads(line_list[-1])
+        else:
+            return json.loads('{"snakeX":15,"snakeY":15,"appleX":0,"appleY":0,"tail_legth":0,"state":"game_over"}')
 
 
 if __name__ == '__main__':
     pass
-    # print(GameRewordReader().read_current_game_state())
+    # print(GameRewordReader('../../../snake_game/snake_log.txt').read_current_game_state())
     # controller = SnakeController()
+    # controller.DIRECTIONS[1]
     # while True:
     #     time.sleep(1)
     #     i = randrange(4)

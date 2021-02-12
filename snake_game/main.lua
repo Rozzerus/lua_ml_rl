@@ -11,8 +11,8 @@ end
 function love.draw()
     game_draw()
     if state == GaneStates.game_over then
-        love.graphics.print('Game Over!', 330, 350, 0, 4, 4)
-        love.graphics.print('Press r to restart ', 270, 450, 0, 3, 3)
+        love.graphics.print('Game Over!', 310, 350, 0, 4, 4)
+        love.graphics.print('Press r to restart ', 300, 450, 0, 3, 3)
     end
     love.graphics.print(text, 10, 30, 0, 1, 1)
 end

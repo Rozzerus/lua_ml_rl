@@ -1,6 +1,7 @@
 import gym
+import reinforcement_learning
 
-env = gym.make('RSnake-v0').env
+env = gym.make('RSnake-v0')
 
 for i in range(100):
     env.reset()
@@ -10,3 +11,5 @@ for i in range(100):
         if done:
             print('episode {} finished after {} timesteps'.format(i, t))
             break
+
+### rrrr
