@@ -10,7 +10,7 @@ class SnakeEnvironment(gym.Env):
     def __init__(self):
         self.snake_controller: SnakeController = None
 
-        self.action_space = spaces.Discrete(3)
+        self.action_space = spaces.Discrete(4)
         self.observation_space = spaces.Box(
             dtype=np.float32,
             low=np.array([0, 0, 0, -1, -1]),
@@ -23,10 +23,11 @@ class SnakeEnvironment(gym.Env):
         self.rewards = [rew_step, rew_apple, rew_death, rew_death2, rew_apple_func]
 
     def step(self, action):
-        if action != 0:
-            self.snake_controller.direction = self.snake_controller.DIRECTIONS[self.snake_controller.direction[action]]
+        self.snake_controller.direction = self.snake_controller.DIRECTIONS[action]
 
         info = {}
+
+        self.snake_controller.move(self.snake_controller.direction)
 
         raw_state, reward, done = self.snake_controller.get_raw_state()
         info['apples'] = self.snake_controller.count_apples

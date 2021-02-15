@@ -12,7 +12,7 @@ class SnakeController:
         self.keyboard: Controller = Controller()
         self.reward_reader: GameRewordReader = GameRewordReader('../snake_game/snake_log.txt')
 
-        self.direction = self.DIRECTIONS['UP']
+        self.direction = self.DIRECTIONS[0] ## 'UP'
 
         self.reward_step = reward_step
         self.reward_apple = reward_apple
@@ -26,15 +26,15 @@ class SnakeController:
         self.count_apples: int = 0
         self.game_over: bool = False
 
-    DIRECTIONS = {
-        'UP': 'w',
-        'DOWN': 's',
-        'LEFT': 'a',
-        'RIGHT': 'd',
-    }
+    DIRECTIONS = [
+        'w', ## UP
+        's', ## DOWN
+        'a', ## LEFT
+        'd', ## RIGHT
+    ]
 
     def move(self, action) -> None:
-        key = self.DIRECTIONS[action]
+        key = action
         self.keyboard.press(key)
         self.keyboard.release(key)
 
