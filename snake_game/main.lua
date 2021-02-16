@@ -45,7 +45,7 @@ function love.textinput(key)
         left, right, up, down = false, false, true, false
     elseif key == 's' and state == GaneStates.running then
         left, right, up, down = false, false, false, true
-    elseif key == 'r' and state == GaneStates.game_over then
+    elseif key == 'r' then
         game_restart()
     end
 end

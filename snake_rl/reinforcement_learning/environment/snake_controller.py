@@ -34,6 +34,7 @@ class SnakeController:
     ]
 
     def move(self, action) -> None:
+        time.sleep(0.50)
         key = action
         self.keyboard.press(key)
         self.keyboard.release(key)
@@ -82,7 +83,7 @@ class GameRewordReader:
         file_handle.close()
         self.steps = len(line_list)
         if self.steps > 0:
-            print(line_list[-1])
+            # print(line_list[-1])
             return json.loads(line_list[-1])
         else:
             return json.loads('{"snakeX":15,"snakeY":15,"appleX":0,"appleY":0,"tail_legth":0,"state":"game_over"}')

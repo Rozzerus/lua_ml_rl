@@ -111,5 +111,7 @@ function game_restart()
     tail_legth = 0
     up, down, left, right = false, false, false, false
     state = GaneStates.running
+    log_file:close()
+    log_file = io.open('snake_log.txt', "w")
     add_apple()
 end
